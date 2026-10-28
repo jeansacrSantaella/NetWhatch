@@ -1,4 +1,4 @@
-/* Colores base y tema oscuro del sistema. */
+/* Define colores base y tema oscuro. */
 :root {
   --bg: #edf0ee;
   --panel: #f8faf9;
@@ -37,7 +37,7 @@
   --none: #24343a;
 }
 
-/* Base y estructura de las tarjetas. */
+/* Define la base visual y la estructura de las tarjetas. */
 * {
   box-sizing: border-box;
 }
@@ -92,7 +92,7 @@ body.widget-expanded {
   overflow: hidden;
 }
 
-/* La cuadrícula se adapta al ancho; el orden de las tarjetas lo maneja el HTML. */
+/* Ajusta las columnas al ancho disponible y conserva el orden del HTML. */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
@@ -128,6 +128,36 @@ body.widget-expanded {
   cursor: pointer;
 }
 
+/* Ajusta los iconos de la barra superior. */
+.export,
+#theme-toggle,
+#reset-layout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+svg.icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Muestra la luna en tema claro y el sol en tema oscuro. */
+#theme-toggle .icon-sun,
+#theme-toggle[aria-pressed="true"] .icon-moon {
+  display: none;
+}
+
+#theme-toggle[aria-pressed="true"] .icon-sun {
+  display: block;
+}
+
 .widget-header {
   display: flex;
   align-items: center;
@@ -159,7 +189,7 @@ body.widget-expanded {
   opacity: .45;
 }
 
-/* Acciones del encabezado y valores técnicos. */
+/* Estiliza las acciones del encabezado y los valores técnicos. */
 .mono {
   font-family: ui-monospace, Menlo, Consolas, monospace;
   font-size: 13px;
@@ -194,7 +224,7 @@ body.widget-expanded {
   outline-offset: 2px;
 }
 
-/* Cinta de disponibilidad: una celda por bloque de diez minutos. */
+/* Divide la disponibilidad en celdas de diez minutos. */
 .ribbon-row {
   display: grid;
   grid-template-columns: 96px 1fr 70px;
@@ -245,7 +275,7 @@ body.widget-expanded {
   font-variant-numeric: tabular-nums;
 }
 
-/* Gráficas y sus leyendas. */
+/* Estiliza las gráficas y sus leyendas. */
 svg {
   width: 100%;
   height: auto;
@@ -272,7 +302,7 @@ svg {
   color: var(--muted);
 }
 
-/* Tablas de calidad y equipos. */
+/* Estiliza las tablas de calidad y equipos. */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -341,7 +371,7 @@ tr:last-child td {
   border-style: dashed;
 }
 
-/* Controles compartidos por las tablas de equipos y eventos. */
+/* Comparte estos controles entre las tablas de equipos y eventos. */
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -378,7 +408,7 @@ tr:last-child td {
   font-variant-numeric: tabular-nums;
 }
 
-/* Filtros para acotar el historial completo de eventos. */
+/* Acota el historial completo con estos filtros. */
 .event-filters {
   display: flex;
   flex-wrap: wrap;
@@ -400,7 +430,7 @@ tr:last-child td {
   font-weight: 600;
 }
 
-/* Lista de eventos: el color depende de si fue caída, recuperación o aviso. */
+/* Colorea las caídas en rojo y las recuperaciones en verde. */
 ul {
   list-style: none;
   margin: 0;
@@ -437,4 +467,20 @@ li.good span {
     inset: 6px;
     padding: 12px;
   }
+}
+
+/* Estiliza el resultado del escáner. */
+#scan-result h3 {
+  font-size: 14px;
+  margin: 14px 0 6px;
+}
+
+#scan-result details {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#scan-result th {
+  white-space: nowrap;
 }
